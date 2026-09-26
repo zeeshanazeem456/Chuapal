@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chaupal: ask the room, watch it answer</title>
+  <meta name="description" content="Create a live poll in seconds, share the link, and watch the votes roll in.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="sky" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
+  <div class="wrap">
+    <header class="site-header">
+      <a class="logo" href="/"><span class="logo-mark">🪷</span>chaupal</a>
+      <div id="auth-slot"></div> <!-- filled by auth.js -->
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 id="hero-title" aria-label="Ask the room. Watch it answer.">
+          <span class="line">Ask the room.</span>
+          <span class="line">Watch it answer.</span>
+        </h1>
+        <p class="lead">Make a poll in ten seconds, share one link, and see every vote land live.</p>
+        <div class="actions">
+          <a class="btn big" href="#create">Start a poll</a>
+          <a class="btn ghost big" href="#recent">See what people are asking</a>
+        </div>
+      </div>
+
+      <div class="demo" aria-hidden="true">
+        <span class="sticker">Live!</span>
+        <h3>☕ Best chai in Islamabad?</h3>
+        <div class="bars" id="demo-bars"></div>
+      </div>
+    </section>
+
+    <!-- CREATE A POLL -->
+    <section class="section reveal" id="create">
+      <div class="section-head">
+        <div>
+          <h2>Start a poll</h2>
+          <p>A question, a vibe, and two to six answers.</p>
+        </div>
+      </div>
+
+      <form class="panel" id="create-form" novalidate>
+        <div class="field">
+          <label for="question">Your question</label>
+          <input class="input question" id="question" name="question" maxlength="140" autocomplete="off" placeholder="Ask the room something…">
+          <div class="counter" id="q-counter">0 / 140</div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="emoji-label">Pick a vibe</span>
+          <div class="emoji-row" id="emoji-row" role="group" aria-labelledby="emoji-label"></div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Answers <span class="hint">2 to 6</span></span>
+          <ul class="option-list" id="option-list"></ul>
+          <button class="btn ghost small" type="button" id="add-option" style="margin-top:12px">＋ Add an answer</button>
+        </div>
+
+        <div class="form-foot">
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button class="btn rose big" type="submit" id="launch"><span>Launch poll</span><span class="launch-rocket">🚀</span></button>
+        </div>
+      </form>
+    </section>
+
+    <!-- RECENT POLLS -->
+    <section class="section reveal" id="recent">
+      <div class="section-head">
+        <div>
+          <h2>Happening now</h2>
+          <p>Tap any poll to vote.</p>
+        </div>
+      </div>
+      <div class="poll-grid" id="poll-grid">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>Made with Express, Postgres, and a lot of chai.</span>
+      <span>Full Stack Web Dev workshop project</span>
+    </footer>
+  </div>
+
+  <!-- type="module" lets files import each other -->
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

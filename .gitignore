@@ -1,0 +1,11 @@
+# Dependencies: always re-installed with `npm install`, never committed
+node_modules/
+
+# Secrets: NEVER commit this file
+.env
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+*.log

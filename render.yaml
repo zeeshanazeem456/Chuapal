@@ -1,0 +1,19 @@
+# Optional "Blueprint" for Render: New → Blueprint → pick this repo.
+# (You can also create the Web Service manually; see README.)
+services:
+  - type: web
+    name: chaupal
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
